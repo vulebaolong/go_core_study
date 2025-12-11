@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"go-core-study/internal/controller"
+	"go-core-study/internal/model"
 	"log"
 	"os"
 	"strings"
@@ -36,12 +37,30 @@ func (cli *CLI) Run() {
 
 		switch choice {
 		case "1":
-			result := cli.controller.AddExpense()
+			fmt.Print("Nhập danh mục: ")
+			category, _ := reader.ReadString('\n')
+			category = strings.TrimSpace(category)
+
+			fmt.Print("Nhập số tiền: ")
+			var amount int
+			fmt.Scanf("%d\n", &amount)
+
+			fmt.Print("Nhập ghi chú: ")
+			note, _ := reader.ReadString('\n')
+			note = strings.TrimSpace(note)
+
+			newExpense := model.Expense{
+				Category: category,
+				Amount:   amount,
+				Note:     note,
+			}
+			result := cli.controller.AddExpense(newExpense)
 			log.Printf("%+v\n", result)
 		case "2":
 			result := cli.controller.ListExpense()
 			log.Printf("%+v\n", result)
 		case "3":
+
 			result := cli.controller.SummaryExpense()
 			log.Printf("%+v\n", result)
 		case "0":
