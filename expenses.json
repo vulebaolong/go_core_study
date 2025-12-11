@@ -16,5 +16,17 @@
     "category": "đám cưới",
     "amount": 5000,
     "note": "đi đám cưới nyc"
+  },
+  {
+    "id": 4,
+    "category": "đi chơi với người iu",
+    "amount": 10000000000,
+    "note": "du lịch khắp thế giới"
+  },
+  {
+    "id": 5,
+    "category": "học",
+    "amount": 90000000,
+    "note": "du học mỹ"
   }
 ]

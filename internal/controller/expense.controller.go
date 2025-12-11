@@ -2,33 +2,33 @@ package controller
 
 import (
 	"go-core-study/internal/common/response"
-	"go-core-study/internal/model"
+	"go-core-study/internal/interfaces"
 	"go-core-study/internal/usecase"
 )
 
-type ExpenseController struct {
-	usecase *usecase.ExpenseUseCase
+type expenseController struct {
+	usecase interfaces.ExpenseUseCase
 }
 
-func NewExpenseController(usecase *usecase.ExpenseUseCase) *ExpenseController {
-	return &ExpenseController{
+func NewExpenseController(usecase interfaces.ExpenseUseCase) interfaces.ExpenseController {
+	return &expenseController{
 		usecase: usecase,
 	}
 }
 
-func (e *ExpenseController) AddExpense(newExpense model.Expense) string {
-	result := usecase.NewExpenseUseCase().AddExpense(newExpense)
-	return response.NewAppSuccess(result, "Thêm chi tiêu")
+func (e *expenseController) AddExpense() string {
+	result, err := usecase.NewExpenseUseCase().AddExpense()
+	return response.HandleResponse(result, err, "Thêm chi tiêu")
 }
-func (e *ExpenseController) ListExpense() string {
-	result := usecase.NewExpenseUseCase().ListExpense()
-	return response.NewAppSuccess(result, "Liệt kê chi tiêu")
+func (e *expenseController) ListExpense() string {
+	result, err := usecase.NewExpenseUseCase().ListExpense()
+	return response.HandleResponse(result, err, "Liệt kê chi tiêu")
 }
-func (e *ExpenseController) ListCategories() string {
-	result := usecase.NewExpenseUseCase().ListCategories()
-	return response.NewAppSuccess(result, "Tổng hợp chi tiêu")
+func (e *expenseController) ListCategories() string {
+	result, err := usecase.NewExpenseUseCase().ListCategories()
+	return response.HandleResponse(result, err, "Liệt kê danh mục")
 }
-func (e *ExpenseController) SummaryExpense() string {
-	result := usecase.NewExpenseUseCase().SummaryExpense()
-	return response.NewAppSuccess(result, "Tổng hợp chi tiêu")
+func (e *expenseController) SummaryExpense() string {
+	result, err := usecase.NewExpenseUseCase().SummaryExpense()
+	return response.HandleResponse(result, err, "Tổng hợp chi tiêu")
 }

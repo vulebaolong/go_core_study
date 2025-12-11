@@ -1,23 +1,19 @@
 package response
 
-import "encoding/json"
-
 type AppSuccess struct {
+	Status  string
 	Message string
 	Data    any
 }
 
-func NewAppSuccess(data any, message string) string {
+func NewAppSuccess(data any, message string) *AppSuccess {
 	if message == "" {
 		message = "OK"
 	}
 
-	response := &AppSuccess{
+	return &AppSuccess{
+		Status:  "Success",
 		Message: message,
 		Data:    data,
 	}
-
-	b, _ := json.MarshalIndent(response, "", "  ")
-
-	return string(b)
 }
