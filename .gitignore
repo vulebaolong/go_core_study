@@ -1,0 +1,19 @@
+# Bỏ qua file thực thi và build
+*.exe
+*.out
+*.test
+
+# Bỏ qua thư mục build
+/build/
+bin/
+dist/
+
+# Bỏ qua file cache của Go
+*.log
+*.tmp
+
+# Bỏ qua thư mục module cache của Go
+vendor/
+
+# Bỏ qua file hệ thống
+.DS_Store
