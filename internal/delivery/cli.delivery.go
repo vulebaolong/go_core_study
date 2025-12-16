@@ -27,7 +27,9 @@ func (cli *CLI) Run() {
 		fmt.Println("\n====== Quản lý chi tiêu ======")
 		fmt.Println("1) Thêm chi tiêu")
 		fmt.Println("2) Liệt kê chi tiêu")
-		fmt.Println("3) Tổng hợp theo danh mục")
+		fmt.Println("3) Sửa chi tiêu")
+		fmt.Println("4) Xoá chi tiêu")
+		fmt.Println("5) Tổng hợp theo danh mục")
 		fmt.Println("0) Thoát")
 		fmt.Println("")
 		fmt.Print(">>Chọn: ")
@@ -60,7 +62,12 @@ func (cli *CLI) Run() {
 			result := cli.controller.ListExpense()
 			log.Printf("%+v\n", result)
 		case "3":
-
+			result := cli.controller.UpdateExpense()
+			log.Printf("%+v\n", result)
+		case "4":
+			result := cli.controller.DeleteExpense()
+			log.Printf("%+v\n", result)
+		case "5":
 			result := cli.controller.SummaryExpense()
 			log.Printf("%+v\n", result)
 		case "0":

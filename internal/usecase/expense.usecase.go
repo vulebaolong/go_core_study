@@ -48,6 +48,20 @@ func (e *ExpenseUseCase) AddExpense(newExpense model.Expense) bool {
 	return err == nil
 }
 
+func (e *ExpenseUseCase) UpdateExpense() []string {
+	return []string{
+		"Food - 20000",
+		"Coffee - 15000",
+	}
+}
+
+func (e *ExpenseUseCase) DeleteExpense() []string {
+	return []string{
+		"Food - 20000",
+		"Coffee - 15000",
+	}
+}
+
 func (e *ExpenseUseCase) ListExpense() []model.Expense {
 	// Load danh sách chi tiêu hiện tại
 	var expenses []model.Expense
