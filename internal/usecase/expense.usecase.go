@@ -17,6 +17,20 @@ func (e *ExpenseUseCase) ListExpense() []string {
 	}
 }
 
+func (e *ExpenseUseCase) UpdateExpense() []string {
+	return []string{
+		"Food - 20000",
+		"Coffee - 15000",
+	}
+}
+
+func (e *ExpenseUseCase) DeleteExpense() []string {
+	return []string{
+		"Food - 20000",
+		"Coffee - 15000",
+	}
+}
+
 func (e *ExpenseUseCase) SummaryExpense() []string {
 	return []string{
 		"Coffee - 15000",
