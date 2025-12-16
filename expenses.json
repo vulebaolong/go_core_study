@@ -6,14 +6,8 @@
     "note": "đi karaoke"
   },
   {
-    "id": 2,
-    "category": "ăn chơi",
-    "amount": 9000,
-    "note": "đi kảa oke lần 2"
-  },
-  {
     "id": 3,
-    "category": "đám cưới",
+    "category": "đám cưới nyc",
     "amount": 5000,
     "note": "đi đám cưới nyc"
   }

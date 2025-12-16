@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"go-core-study/internal/controller"
-	"go-core-study/internal/model"
 	"log"
 	"os"
 	"strings"
@@ -39,24 +38,7 @@ func (cli *CLI) Run() {
 
 		switch choice {
 		case "1":
-			fmt.Print("Nhập danh mục: ")
-			category, _ := reader.ReadString('\n')
-			category = strings.TrimSpace(category)
-
-			fmt.Print("Nhập số tiền: ")
-			var amount int
-			fmt.Scanf("%d\n", &amount)
-
-			fmt.Print("Nhập ghi chú: ")
-			note, _ := reader.ReadString('\n')
-			note = strings.TrimSpace(note)
-
-			newExpense := model.Expense{
-				Category: category,
-				Amount:   amount,
-				Note:     note,
-			}
-			result := cli.controller.AddExpense(newExpense)
+			result := cli.controller.AddExpense()
 			log.Printf("%+v\n", result)
 		case "2":
 			result := cli.controller.ListExpense()
@@ -78,20 +60,3 @@ func (cli *CLI) Run() {
 		}
 	}
 }
-
-// FLOW CHO MENU SỐ 1 — ADD EXPENSE
-// func (cli *CLI) addExpense(reader *bufio.Reader) {
-// 	fmt.Print("Amount: ")
-// 	amountStr, _ := reader.ReadString('\n')
-// 	amountStr = strings.TrimSpace(amountStr)
-
-// 	fmt.Print("Category: ")
-// 	category, _ := reader.ReadString('\n')
-// 	category = strings.TrimSpace(category)
-
-// 	fmt.Print("Note: ")
-// 	note, _ := reader.ReadString('\n')
-// 	note = strings.TrimSpace(note)
-
-// 	cli.expenseCtrl.HandleAdd(amountStr, category, note)
-// }

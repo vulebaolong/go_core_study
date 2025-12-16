@@ -2,7 +2,6 @@ package controller
 
 import (
 	"go-core-study/internal/common/response"
-	"go-core-study/internal/model"
 	"go-core-study/internal/usecase"
 )
 
@@ -16,8 +15,8 @@ func NewExpenseController(usecase *usecase.ExpenseUseCase) *ExpenseController {
 	}
 }
 
-func (e *ExpenseController) AddExpense(newExpense model.Expense) string {
-	result := usecase.NewExpenseUseCase().AddExpense(newExpense)
+func (e *ExpenseController) AddExpense() string {
+	result := usecase.NewExpenseUseCase().AddExpense()
 	return response.NewAppSuccess(result, "Thêm chi tiêu")
 }
 func (e *ExpenseController) ListExpense() string {
