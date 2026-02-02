@@ -14,9 +14,39 @@ Khởi tạo và giải thích cấu trúc cơ bản
 Mở terminal tại thư mục bạn muốn tạo project, chạy:  
 ```bash
 go mod init go-core-study
-```  
-Tạo file go.mod để quản lý module và dependencies.
+```
+-   Lệnh sẽ tạo ra file go.mod để quản lý module và dependencies.
+-   Gồm:
+    -   Tên project
+    -   Phiên bản Go
+    -   Thư viện phụ thuộc (dependencies)
+-   File go.mod giống như:
+    -   package.json (Node.js)
+    -   pom.xml (Java Maven)
+    -   requirements.txt (Python)
 
+### 2.  Chạy Hello world
+-   Tạo file main.go
+    ```go
+    package main
+
+    import "fmt"
+
+    func main() {
+        fmt.Println("Hello world")
+    }
+    ```
+    -   main.go không bắt buộc phải tên là main.go, bạn có thể đặt app.go, server.go…
+    -   Quan trọng là file đó thuộc package main và có hàm func main().
+    -   main là tên hàm đặc biệt: Go runtime sẽ gọi hàm này đầu tiên khi chạy chương trình.
+    -   main() không nhận tham số và không trả về gì.
+    -   Go build theo “package”, không theo “file”
+        -   Trong 1 thư mục (ví dụ cmd/app/), bạn có thể có nhiều file cùng package:
+            -   main.go
+            -   router.go
+            -   handler.go
+        -   Khi xử dụng hàm giữa các file thì không cần phải import vì chúng cùng package
+        
 ### 2. Tạo cấu trúc thư mục
 Tạo các folder như sau:  
 ```bash
@@ -46,7 +76,6 @@ controller/: Xử lý logic điều phối, nhận request từ delivery, gọi 
 delivery/: Giao tiếp với user, ví dụ CLI, HTTP, gRPC, v.v.
 di/: Dependency Injection, khởi tạo và kết nối các thành phần lại với nhau.
 model/: Định nghĩa các struct dữ liệu (nếu có).
-repository/: Tầng truy xuất dữ liệu (nếu có, ví dụ thao tác với DB, file).
 usecase/: Chứa business logic (nghiệp vụ chính).
 common/: Chứa các thành phần dùng chung, ví dụ response, error, helper.
 response/: Định nghĩa struct và hàm trả về response chuẩn.
