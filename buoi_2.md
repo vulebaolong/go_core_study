@@ -43,10 +43,10 @@ type Expense struct {
         Khi encode JSON sẽ ra dạng:
         ```json
         {
-        "id": 1,
-        "category": "Food",
-        "amount": 50000,
-        "note": "Lunch"
+            "id": 1,
+            "category": "Food",
+            "amount": 50000,
+            "note": "Lunch"
         }
         ```
         📌 Nếu không có tag thì mặc định JSON sẽ dùng tên field y chang ("ID", "Category"), thường không đẹp và không theo quy ước API.
@@ -70,7 +70,6 @@ package repository
 
 import (
     "encoding/json"
-    "io/ioutil"
     "os"
     "go-core-study/internal/model"
 )
@@ -79,11 +78,11 @@ import (
 const storeFile = "expenses.json"
 
 func SaveExpenses(expenses []model.Expense) error {
-    data, err := json.MarshalIndent(expenses, "", "  ")
-    if err != nil {
-        return err
-    }
-    return ioutil.WriteFile(storeFile, data, 0644)
+	data, err := json.MarshalIndent(expenses, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(storeFile, data, 0644)
 }
 
 // 1. Multiple results (trả về nhiều giá trị cùng lúc):

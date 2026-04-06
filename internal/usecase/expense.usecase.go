@@ -42,7 +42,6 @@ func (e *expenseUseCase) AddExpense() (any, error) {
 		Note:     note,
 	}
 
-	// Load danh sách chi tiêu hiện tại
 	var expenses []model.Expense
 	data, err := os.ReadFile(e.storeFile)
 	if err != nil {
@@ -92,8 +91,6 @@ func (e *expenseUseCase) ListExpense() ([]model.Expense, error) {
 }
 
 func (e *expenseUseCase) SummaryExpense() (any, error) {
-
-	// Lấy tất cả danh mục đang có
 	categories, err := e.ListCategories()
 	if err != nil {
 		return nil, response.NewAppError(err.Error())
@@ -135,7 +132,6 @@ func (e *expenseUseCase) SummaryExpense() (any, error) {
 	return reusltExpenses, nil
 }
 
-// Liệt kê các danh mục chi tiêu đang có
 func (e *expenseUseCase) ListCategories() ([]string, error) {
 	const storeFile = "expenses.json"
 	var expenses []model.Expense
